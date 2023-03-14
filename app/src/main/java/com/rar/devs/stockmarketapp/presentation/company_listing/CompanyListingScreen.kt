@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.rar.devs.stockmarketapp.presentation.destinations.CompanyInfoScreenDestination
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -61,7 +62,9 @@ fun CompanyListingScreen(
                     val company = state.companies[i]
                     CompanyItem(company = company, modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { }
+                        .clickable {
+                            navigator.navigate(CompanyInfoScreenDestination(company.symbol))
+                        }
                         .padding(16.dp)
                     )
                     if (i < state.companies.size) {
